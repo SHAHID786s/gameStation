@@ -1,1 +1,6 @@
-<p>game-list works!</p>
+<div class="row row-cols-1 row-cols-md-4">
+  <!-- to create many cards just loop line which starts div class - col mb-4 -->
+  <div *ngFor="let g of games; index as i" class="col mb-4">
+    <app-game-card [Game]="g"></app-game-card>
+  </div>
+</div>
