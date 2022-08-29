@@ -1,32 +1,62 @@
-<form>
+<form [formGroup]="registerForm" (ngSubmit)="onSub()">
   <div class="card">
     <h3 class="card-title">Register</h3>
 
     <div class="form-group col-sm-6">
       <label for="name">Name</label>
-      <input type="text" class="form-control" placeholder="Enter name" />
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Enter name"
+        formControlName="name"
+      />
+      <span *ngIf="!registerForm.get('name')?.valid && registerForm.get('name')?.touched">Please provide name</span>
     </div>
 
     <div class="form-group col-sm-6">
       <label for="email">Email</label>
-      <input type="text" class="form-control" placeholder="Enter email" />
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Enter email"
+        formControlName="email"
+      />
+      <span *ngIf="!registerForm.get('email')?.valid && registerForm.get('email')?.touched">
+         <span *ngIf="registerForm.get('email')?.hasError('required')"> Email is required</span>
+         <span *ngIf="registerForm.get('email')?.hasError('email')"> Please provide a valid email</span>
+      </span>
     </div>
 
     <div class="form-group col-sm-6">
       <label for="password">Password</label>
-      <input type="password" class="form-control" />
+      <input type="password" class="form-control" formControlName="password" />
+      <span *ngIf="!registerForm.get('password')?.valid && registerForm.get('password')?.touched">
+        <span *ngIf="registerForm.get('password')?.hasError('minlength')">must be 9 characters or more</span>
+        <span *ngIf="registerForm.get('password')?.hasError('required')">Password is a required field</span>
+      </span>
     </div>
 
     <div class="form-group col-sm-6">
       <label for="confirmPassword">Confirm Password</label>
-      <input type="password" class="form-control" />
+      <input
+        type="password"
+        class="form-control"
+        formControlName="confirmPass"
+      />
+      <span *ngIf="!registerForm.get('confirmPass')?.valid && registerForm.get('confirmPass')?.touched">
+        <span *ngIf="registerForm.get('confirmPass')">Please confirm password </span>
+
+      </span>
+      <!-- here we do not nest the span because the field is at a global level. Also we check that the field is valid i.e. minimum length achieved so we dont get minimum length error -->
+      <span *ngIf="registerForm.hasError('notmatched') && registerForm.get('confirmPass')?.valid">Password does not match </span>
     </div>
 
     <div class="form-group col-sm-6">
       <label for="mobile">Mobile</label>
-      <input type="mobile" class="form-control" />
+      <input type="mobile" class="form-control" formControlName="mobile" />
     </div>
-
+    {{ registerForm.value | json }}
+    form valid:{{ registerForm.valid | json }}
     <div class="form-group col-sm-6" id="btns">
       <button type="submit" class="btn btn-outline-success mr-3 mt-3">
         Submit
