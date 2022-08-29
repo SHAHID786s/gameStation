@@ -1,4 +1,7 @@
+import { splitAtPeriod } from '@angular/compiler/src/util';
 import { Component, OnInit } from '@angular/core';
+import { HubService } from 'src/app/services/hub.service';
+import { IGame } from '../interfaces/IGame';
 
 @Component({
   selector: 'app-game-list',
@@ -6,33 +9,24 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./game-list.component.css'],
 })
 export class GameListComponent implements OnInit {
-  games: Array<any> = [
-    {
-      Id: 1,
-      Genre: 'FPS',
-      Title: 'MW2',
-      Price: 59.99,
-      Age: 18,
-      Info: '"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tmollit anim id est laborum."',
-    },
-    {
-      Id: 2,
-      Genre: 'FPS',
-      Title: 'Halo 5',
-      Price: 69.99,
-      Age: 18,
-      Info: '"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tmollit anim id est laborum."',
-    },
-    {
-      Id: 1,
-      Genre: 'RPG',
-      Title: 'Sea of Theives',
-      Price: 49.99,
-      Age: 18,
-      Info: '"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tmollit anim id est laborum."',
-    },
-  ];
-  constructor() {}
+  games: Array<IGame> = [];
+  isAvailable!: boolean;
+  constructor(private hubService: HubService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    //get all titles then filter them to et all the tittle that are marked with the available field to true
+    this.hubService.GetAllTitles().subscribe(
+      (res) => {
+        this.games = res;
+        const specificTitles = this.games.filter((x) => {
+          return x.available === true;
+        });
+        console.log(specificTitles);
+        this.games = specificTitles;
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
+  }
 }

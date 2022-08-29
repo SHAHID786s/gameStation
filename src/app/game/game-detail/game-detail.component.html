@@ -1,0 +1,22 @@
+<p>game-detail works!</p>
+<p>{{ gameId }}</p>
+
+<div class="container">
+  <div class="row">
+    <ng-container>
+      <div class="col-sm">
+        <button
+          type="button"
+          class="btn btn-lg btn-outline-primary"
+          (click)="onPrevious()"
+          [disabled]="cantGoBack === true">Previous</button>
+      </div>
+    </ng-container>
+    <div class="col-sm">
+      <button
+        type="button"
+        class="btn btn-lg btn-outline-primary"
+        (click)="onNext()">Next</button>
+    </div>
+  </div>
+</div>

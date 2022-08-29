@@ -1,6 +1,30 @@
-<div class="card" style="width: 250px">
-  <img src="assets/image/mw2.jpg" class="card-img-top" alt="mw2" />
+<div class="card" (click)="imageClick()">
+  <img
+    *ngIf="Game.src"
+    class="card-img-top"
+    src="{{ Game.src }}"
+    alt="{{ Game.Title }}"
+  />
+  <img
+    *ngIf="!Game.src"
+    class="card-img-top"
+    src="assets\image\noimage.jpg"
+    alt="{{ Game.Title }}"
+  />
   <div class="card-body">
+    <button
+      type="button"
+      class="btn btn-group btn-outline-info btn-sm btn-block"
+      routerLink="/game-detail/{{ Game.Id }}"
+    >
+      Edit
+    </button>
+    <button
+      type="button"
+      class="btn btn-group btn-outline-danger btn-sm btn-block"
+    >
+      Delete
+    </button>
     <p class="card-text">{{ Game.Info }}</p>
     <ul class="list-group list-group-flush">
       <li class="list-group-item text-muted">Title: {{ Game.Title }}</li>
@@ -8,20 +32,6 @@
       <li class="list-group-item text-muted">Price: {{ Game.Price }}</li>
       <li class="list-group-item text-muted">Age: {{ Game.Age }}</li>
     </ul>
-    <div class="card-footer">
-      <a
-        href="https://www.callofduty.com/uk/en/modernwarfare2"
-        class="card-link"
-        >More info</a
-      >
-    </div>
+    <div class="card-footer"></div>
   </div>
 </div>
-
-<!-- <div class="card-body">
-  <h5 class="card-title">Title: {{Game.Title}}</h5>
-  <h6 class="card-subtitle mb-2 text-muted">Genre: {{Game.Genre}}</h6>
-  <h6 class="card-subtitle mb-2 text-muted">Price: {{Game.Price}}</h6>
-  <h6 class="card-subtitle mb-2 text-muted">Age: {{Game.Age}}</h6>
-  <a href="https://www.callofduty.com/uk/en/modernwarfare2" class="card-link">More info</a>
-</div> -->

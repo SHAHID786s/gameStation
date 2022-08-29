@@ -1,0 +1,52 @@
+[
+  {
+    "Id": 1,
+    "Genre": "FPS",
+    "Title": "MW2",
+    "Price": 59.99,
+    "Age": 18,
+    "Info": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tmollit anim id est laborum.",
+    "src": "assets/image/mw2.jpg",
+    "available": true
+  },
+  {
+    "Id": 2,
+    "Genre": "FPS",
+    "Title": "Halo 5",
+    "Price": 69.99,
+    "Age": 18,
+    "Info": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tmollit anim id est laborum.",
+    "src": "assets/image/halo5.jpg",
+    "available": true
+  },
+  {
+    "Id": 3,
+    "Genre": "RPG",
+    "Title": "Sea of Theives",
+    "Price": 49.99,
+    "Age": 18,
+    "Info": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tmollit anim id est laborum.",
+    "src": "assets/image/Sea_of_thieves_cover_art.jpg",
+    "available": true
+  },
+  {
+    "Id": 4,
+    "Genre": "RPG",
+    "Title": "DOTA2",
+    "Price": 79.99,
+    "Age": 18,
+    "Info": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tmollit anim id est laborum.",
+    "src": "",
+    "available": false
+  },
+  {
+    "Id": 5,
+    "Genre": "Battle royal",
+    "Title": "Fall Guys",
+    "Price": 39.99,
+    "Age": 3,
+    "Info": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tmollit anim id est laborum.",
+    "src": "",
+    "available": false
+  }
+]
