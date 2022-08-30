@@ -10,7 +10,7 @@
         placeholder="Enter name"
         formControlName="name"
       />
-      <span *ngIf="!registerForm.get('name')?.valid && registerForm.get('name')?.touched">Please provide name</span>
+      <span *ngIf="!registerForm.get('name')?.valid && registerForm.get('name')?.touched ">Please provide name</span>
     </div>
 
     <div class="form-group col-sm-6">
@@ -55,10 +55,12 @@
       <label for="mobile">Mobile</label>
       <input type="mobile" class="form-control" formControlName="mobile" />
     </div>
-    {{ registerForm.value | json }}
-    form valid:{{ registerForm.valid | json }}
+   
+    <div class id="fromWarn" *ngIf="!registerForm.valid">
+      <span>All fields are required </span>
+    </div>
     <div class="form-group col-sm-6" id="btns">
-      <button type="submit" class="btn btn-outline-success mr-3 mt-3">
+      <button type="submit" class="btn btn-outline-success mr-3 mt-3" [disabled] ="!registerForm.valid">
         Submit
       </button>
       <button type="reset" class="btn btn-outline-danger mr-3 mt-3">
