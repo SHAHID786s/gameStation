@@ -8,6 +8,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { IUser } from 'src/app/game/interfaces/IUser';
+import { AlertifyService } from 'src/app/services/alertify.service';
 
 @Component({
   selector: 'app-user-register',
@@ -18,7 +19,7 @@ export class UserRegisterComponent implements OnInit {
   registerForm!: FormGroup;
   user!: IUser;
 
-  constructor() {}
+  constructor(private myAlertify: AlertifyService) {}
 
   ngOnInit() {
     this.registerForm = new FormGroup(
@@ -43,13 +44,17 @@ export class UserRegisterComponent implements OnInit {
       },
       this.verifyPasswordMatch
     );
-
-    
   }
 
   onSub() {
     console.log(this.userData());
+    if (!this.registerForm.valid) {
+      this.myAlertify.error(
+        'Please provide data to all the fields to continue'
+      );
+    }
     this.addUser(this.userData());
+    this.displayRegistrationMessage();
   }
 
   verifyPasswordMatch(f: AbstractControl): ValidationErrors | null {
@@ -76,6 +81,12 @@ export class UserRegisterComponent implements OnInit {
     } else {
       users = [user]; // just set the one user as the array is not populated yet
     }
-    localStorage.setItem('users', JSON.stringify(users)); // actuall set the local storage to the user/s
+    localStorage.setItem('users', JSON.stringify(users)); // actuall set the local storage to the user/s in the correct format
+  }
+
+  displayRegistrationMessage() {
+    if (this.registerForm.valid) {
+      this.myAlertify.success('Your registeration is complete!');
+    }
   }
 }

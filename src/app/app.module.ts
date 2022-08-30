@@ -14,6 +14,7 @@ import { GameDetailComponent } from './game/game-detail/game-detail.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UserLoginComponent } from './user/user-login/user-login.component';
 import { UserRegisterComponent } from './user/user-register/user-register.component';
+import { AlertifyService } from './services/alertify.service';
 
 const applicationRoutes: Routes = [
   { path: '', component: GameListComponent },
@@ -44,7 +45,7 @@ const applicationRoutes: Routes = [
     FormsModule,
     ReactiveFormsModule,
   ],
-  providers: [HubService],
+  providers: [HubService, AlertifyService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
