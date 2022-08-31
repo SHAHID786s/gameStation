@@ -40,6 +40,7 @@ export class UserRegisterComponent implements OnInit {
         mobile: new FormControl(null, [
           Validators.required,
           Validators.maxLength(11),
+          Validators.minLength(11),
         ]),
       },
       this.verifyPasswordMatch
@@ -58,9 +59,7 @@ export class UserRegisterComponent implements OnInit {
   }
 
   verifyPasswordMatch(f: AbstractControl): ValidationErrors | null {
-    return f.get('password')?.value === f.get('confirmPass')?.value
-      ? null
-      : { notmatched: true };
+    return f.get('password')?.value === f.get('confirmPass')?.value? null: { notmatched: true };
   }
 
   userData(): IUser {

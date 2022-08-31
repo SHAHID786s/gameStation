@@ -15,7 +15,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UserLoginComponent } from './user/user-login/user-login.component';
 import { UserRegisterComponent } from './user/user-register/user-register.component';
 import { AlertifyService } from './services/alertify.service';
+import { AuthService } from './services/auth.service';
 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 const applicationRoutes: Routes = [
   { path: '', component: GameListComponent },
   { path: 'manage', component: ManageGameComponent },
@@ -44,8 +47,10 @@ const applicationRoutes: Routes = [
     RouterModule.forRoot(applicationRoutes),
     FormsModule,
     ReactiveFormsModule,
+    BrowserAnimationsModule,
+    BsDropdownModule.forRoot(),
   ],
-  providers: [HubService, AlertifyService],
+  providers: [HubService, AlertifyService, AuthService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

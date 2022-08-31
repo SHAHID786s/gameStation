@@ -38,11 +38,61 @@
     <div>
       <ul class="nav navbar-nav">
         <li class="nav-item">
-          <a class="nav-link" routerLink="/user/register" routerLinkActive="active" >Register</a>
+          <a class="nav-link" routerLink="/user/register" routerLinkActive="active" *ngIf="!loggedIn()">Register</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/user/login" routerLinkActive="active" >Login</a>
+          <a class="nav-link" routerLink="/user/login" routerLinkActive="active"*ngIf="!loggedIn()">Login</a>
         </li>
+        <!-- <li class="nav-item">
+          <a class="nav-link" routerLink="/user/login" routerLinkActive="active"*ngIf="loggedIn()" (click)="onLogout()" >Logout</a>
+        </li> -->
+
+
+        <div *ngIf="loggedIn()" class="dropdown mr-5" dropdown>
+          <a href="#" class="dropdown-toggle text-light" dropdownToggle (click)="false">
+              Welcome {{loggedinUser}}
+          </a>
+          <div class="dropdown-menu" *dropdownMenu>
+              <a class="dropdown-item">
+                <i class="fas fa-tachometer-alt" routerLinkActive="active" routerLink="/"></i> View Dashboard</a>
+              <a class="dropdown-item">
+                <i class="far fa-user-circle"></i> My Profile</a>
+              <a class="dropdown-item">
+                <i class="fas fa-key"></i> Change Password</a>
+              <a (click)='onLogout()' class="dropdown-item">
+                <i class="fas fa-sign-out-alt" routerLinkActive="active" routerLink="/"></i> Logout</a>
+          </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
       </ul>
     </div>
   </div>

@@ -31,7 +31,7 @@
       <label for="password">Password</label>
       <input placeholder="Enter a password" type="password" class="form-control" formControlName="password" />
       <span *ngIf="!registerForm.get('password')?.valid && registerForm.get('password')?.touched">
-        <span *ngIf="registerForm.get('password')?.hasError('minlength')">must be 9 characters or more</span>
+        <span *ngIf="registerForm.get('password')?.hasError('minlength')">Must be 9 characters or more</span>
         <span *ngIf="registerForm.get('password')?.hasError('required')">Password is a required field</span>
       </span>
     </div>
@@ -54,6 +54,11 @@
     <div class="form-group col-sm-6">
       <label for="mobile">Mobile</label>
       <input type="mobile" class="form-control" formControlName="mobile" placeholder="0123456789"/>
+      <span *ngIf="!registerForm.get('mobile')?.valid && registerForm.get('mobile')?.touched">
+        <span *ngIf="registerForm.get('mobile')?.hasError('minlength')">must be 11 digits </span>
+        <span *ngIf="registerForm.get('mobile')?.hasError('required')">Mobile is a required field</span>
+
+      </span>
     </div>
 
 
