@@ -14,7 +14,7 @@ export class GameListComponent implements OnInit {
   constructor(private hubService: HubService) {}
 
   ngOnInit(): void {
-    //get all titles then filter them to et all the tittle that are marked with the available field to true
+    //get all titles then filter them to get all the titles that are marked with the available field to true
     this.hubService.GetAllTitles().subscribe(
       (res) => {
         this.games = res;

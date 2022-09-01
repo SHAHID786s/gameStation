@@ -1,4 +1,4 @@
-.form-group.col-sm-6 {
+.form-group.col-sm-6, #previewGame{
 
   margin: auto;
 }
@@ -8,14 +8,14 @@ form{
 
 }
 
-#btns{
+#btns,p{
   text-align: center;
 }
 
 .card{
   box-shadow:5px 10px 18px #888888;
   padding-bottom: 5%;
-  padding-top: 5%;
+  padding-top: 2.5%;
 
 
 }
@@ -27,3 +27,11 @@ h3{
 label{
   font-weight: bold;
 }
+
+/* make image siot flush into card  */
+.card-img-top {
+  width: 100%;
+  height: 200px;
+  object-fit: fill;
+}
+

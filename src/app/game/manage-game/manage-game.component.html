@@ -1,56 +1,129 @@
-<form (ngSubmit)="onSub(Form)" #Form="ngForm">
-  <div class="card">
-    <h3 class="card-title">Add Game</h3>
-  <div class="form-group col-sm-6">
-    <label for="genre">Genre</label>
-    <input
-      type="text"
-      class="form-control"
-      placeholder="Enter genre" ngModel name="Genre"
-    />
+<div class="container" >
+  <div class="row">
+    <div class="col-sm-8">
+  <form (ngSubmit)="onSub(Form)" #Form="ngForm" >
+    <tabset #gameTabs>
+      <tab heading="Genre">
+        <div class="card">
+          <div class="form-group col-sm-6">
+            <h3 class="card-title">Select a Genre</h3>
+            <select class="custom-select mr-sm-2" ngModel name="Genre" [(ngModel)]="gamesPreview.Genre">
+              <option selected disabled>Please select</option>
+              <option value="fps">FPS</option>
+              <option value="rpg">RPG</option>
+              <option value="moba">
+                Multiplayer Online Battle Arena (MOBA)
+              </option>
+              <option value="action">Action-adventure</option>
+              <option value="survival">Survival</option>
+              <option value="sports">Sports</option>
+              <option value="simulation">Simulation</option>
+            </select>
+          </div>
+
+          <div class="form-group col-sm-6" id="btns">
+            <button type="button"class="btn btn-primary mr-3 mt-3 btn-block"(click)="selectTab(1)">Next</button>
+          </div>
+        </div>
+      </tab>
+
+      <tab heading="Title">
+        <div class="card">
+          <h3 class="card-title">Enter Title</h3>
+          <div class="form-group col-sm-6" id="btns">
+            <input type="text" class="form-control" placeholder="Enter title" ngModel name="title" [(ngModel)]="gamesPreview.Title"/>
+            <button type="button" class="btn btn-primary mr-3 mt-3 btn-block" (click)="selectTab(2)">Next</button>
+            <button type="button" class="btn btn-primary mr-3 mt-3 btn-block" (click)="selectTab(0)">Back</button>
+          </div>
+        </div>
+      </tab>
+
+      <tab heading="Pricing">
+        <div class="card">
+          <h3 class="card-title">Pricing</h3>
+          <div class="form-group col-sm-6" id="btns">
+            <input type="number" min="10" step="10" class="form-control" placeholder="0-999.99" ngModel name="Price" [(ngModel)]="gamesPreview.Price"/>
+            <button type="button" class="btn btn-primary mr-3 mt-3 btn-block" (click)="selectTab(3)">Next</button>
+            <button type="button" class="btn btn-primary mr-3 mt-3 btn-block" (click)="selectTab(1)">Back</button>
+          </div>
+        </div>
+      </tab>
+
+      <tab heading="Age Restrictions">
+        <div class="card">
+          <h3 class="card-title">Age</h3>
+          <div class="form-group col-sm-6" id="btns">
+            <select class="custom-select mr-sm-2" ngModel name="Age" [(ngModel)]="gamesPreview.Age">
+              <option selected disabled>Please select</option>
+              <option value="3">3</option>
+              <option value="7">7</option>
+              <option value="12">12</option>
+              <option value="16">16</option>
+              <option value="18">18</option>
+            </select>
+            <button type="button"class="btn btn-primary mr-3 mt-3 btn-block"(click)="selectTab(4)">Next</button>
+            <button type="button"class="btn btn-primary mr-3 mt-3 btn-block"(click)="selectTab(2)">Back</button>
+          </div>
+        </div>
+      </tab>
+
+      <tab heading="Description">
+        <div class="card">
+          <h3 class="card-title">Description of the game</h3>
+
+          <div class="form-group col-sm-6" id="btns">
+            <textarea class="form-control" style="resize: none" rows="5"  ngModel name="Info" [(ngModel)]="gamesPreview.Info">
+            </textarea>
+            <button type="button"class="btn btn-primary mr-3 mt-3 btn-block"(click)="selectTab(5)">Next</button>
+            <button type="button"class="btn btn-primary mr-3 mt-3 btn-block"(click)="selectTab(3)">Back</button>
+          </div>
+        </div>
+      </tab>
+
+      <tab heading="Availability">
+        <div class="card">
+          <h3 class="card-title">Choose Availability</h3>
+          <div class="form-group col-sm-6" id="btns">
+              <input type="text"
+              placeholder="Datepicker"
+              class="form-control"
+              bsDatepicker ngModel name ="releaseDate" [(ngModel)]="gamesPreview.releaseDate" [bsConfig]="{containerClass:'theme-default',dateInputFormat:'DD-MM-YYYY',showTodayButton: true, todayPosition: 'center' }" >
+
+            <button type="button"class="btn btn-primary mr-3 mt-3 btn-block"(click)="selectTab(6)">Next</button>
+            <button type="button"class="btn btn-primary mr-3 mt-3 btn-block"(click)="selectTab(4)">Back</button>
+          </div>
+        </div>
+      </tab>
+
+      <tab heading="Upload">
+        <div class="card">
+          <h3 class="card-title">Upload</h3>
+          <div class="form-group col-sm-6" id="btns">
+            <img class="card-img-top" />
+            <input type ="file"class="form-control-file">
+            <button type="submit" class="btn btn-success mr-3 mt-3 btn-block"> Save</button>
+            <button type="reset" class="btn btn-danger mr-3 mt-3 btn-block">Cancel </button>
+            <button type="button"class="btn btn-primary mr-3 mt-3 btn-block" (click)="selectTab(5)"> Back </button>
+          </div>
+        </div>
+      </tab>
+    </tabset>
+
+
+
+
+
+
+
+
+
+    </form>
   </div>
-  <div class="form-group col-sm-6">
-    <label for="title">Title</label>
-    <input
-      type="text"
-      class="form-control"
-      placeholder="Enter title" ngModel name="Title"
-    />
-  </div>
-  <div class="form-group col-sm-6">
-    <label for="price">Price</label>
-    <input type="text" class="form-control" placeholder="0-99.99"ngModel name="Price"/>
-  </div>
-  <div class="form-group col-sm-6">
-    <label for="age">Age</label>
-    <select class="custom-select mr-sm-2" ngModel name="Age">
-      <option selected disabled>Please select</option>
-      <option value="3">3</option>
-      <option value="7">7</option>
-      <option value="12">12</option>
-      <option value="16">16</option>
-      <option value="18">18</option>
-    </select>
-  </div>
-  <div class="form-group col-sm-6">
-    <label for="info">Info</label>
-    <input
-      type="text"
-      class="form-control"
-      placeholder="Enter Information"ngModel name="Info"
-    />
-  </div>
-  <div class="form-group col-sm-6">
-    <label for="available">Available</label>
-    <select class="custom-select mr-sm-2"ngModel name="Available">
-      <option selected disabled>Please select</option>
-      <option value="true">Yes</option>
-      <option value="false">No</option>
-    </select>
-  </div>
-  <div class="form-group col-sm-6 " id="btns">
-    <button type="submit" class="btn btn-outline-success mr-3 mt-3">Submit</button>
-    <button type="reset" class="btn btn-outline-danger mr-3 mt-3">Cancel</button>
+  <div class=" card col-sm-4" id="preview">
+    <h3 class="card-title">Game Listing Preview</h3>
+    <app-game-card [Game]="gamesPreview" id="previewGame"></app-game-card>
+
   </div>
 </div>
-</form>
+</div>
+

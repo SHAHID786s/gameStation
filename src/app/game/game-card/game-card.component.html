@@ -12,25 +12,15 @@
     alt="{{ Game.Title }}"
   />
   <div class="card-body">
-    <button
-      type="button"
-      class="btn btn-group btn-outline-info btn-sm btn-block"
-      routerLink="/game-detail/{{ Game.Id }}"
-    >
-      Edit
-    </button>
-    <button
-      type="button"
-      class="btn btn-group btn-outline-danger btn-sm btn-block"
-    >
-      Delete
-    </button>
+    <!-- <button type="button" class="btn btn-group btn-outline-info btn-sm btn-block" routerLink="/game-detail/{{ Game.Id }}">Edit</button>
+    <button type="button" class="btn btn-group btn-outline-danger btn-sm btn-block">Delete</button> -->
     <p class="card-text">{{ Game.Info }}</p>
     <ul class="list-group list-group-flush">
       <li class="list-group-item text-muted">Title: {{ Game.Title }}</li>
       <li class="list-group-item text-muted">Genre: {{ Game.Genre }}</li>
       <li class="list-group-item text-muted">Price: {{ Game.Price }}</li>
       <li class="list-group-item text-muted">Age: {{ Game.Age }}</li>
+      <li class="list-group-item text-muted">Released: {{ Game.releaseDate }}</li>
     </ul>
     <div class="card-footer"></div>
   </div>

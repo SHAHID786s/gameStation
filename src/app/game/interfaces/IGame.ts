@@ -7,4 +7,5 @@ export interface IGame {
   Info: string;
   src?: string;
   available?: boolean;
+  releaseDate?:string
 }
