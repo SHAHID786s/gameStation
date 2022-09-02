@@ -17,9 +17,16 @@ export class GameListComponent implements OnInit {
     //get all titles then filter them to get all the titles that are marked with the available field to true
     this.hubService.GetAllTitles().subscribe(
       (res) => {
+        //get data from local storage
+        const newG = JSON.parse(localStorage.getItem('newGame') as string);
+
         this.games = res;
+        if(newG)
+        {
+          this.games=[newG,...this.games]
+        }
         const specificTitles = this.games.filter((x) => {
-          return x.available === true;
+          return x.Available === true;
         });
         console.log(specificTitles);
         this.games = specificTitles;

@@ -23,7 +23,7 @@ export class UpcomingGameComponent implements OnInit {
         this.games = res;
         //now filter through array and get upcoming flag to true.
         const upcomingGames = this.games.filter((x) => {
-          return x.available === false;
+          return x.Available === false;
         });
         this.games = upcomingGames; // now store upcoming games into that array for displaying
       },

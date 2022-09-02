@@ -7,7 +7,7 @@
     "Age": 18,
     "Info": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tmollit anim id est laborum.",
     "src": "assets/image/mw2.jpg",
-    "available": true
+    "Available": true
   },
   {
     "Id": 2,
@@ -17,7 +17,7 @@
     "Age": 18,
     "Info": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tmollit anim id est laborum.",
     "src": "assets/image/halo5.jpg",
-    "available": true
+    "Available": true
   },
   {
     "Id": 3,
@@ -27,7 +27,7 @@
     "Age": 18,
     "Info": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tmollit anim id est laborum.",
     "src": "assets/image/Sea_of_thieves_cover_art.jpg",
-    "available": true
+    "Available": true
   },
   {
     "Id": 4,
@@ -37,7 +37,7 @@
     "Age": 18,
     "Info": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tmollit anim id est laborum.",
     "src": "",
-    "available": false
+    "Available": false
   },
   {
     "Id": 5,
@@ -47,6 +47,6 @@
     "Age": 3,
     "Info": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tmollit anim id est laborum.",
     "src": "",
-    "available": false
+    "Available": false
   }
 ]

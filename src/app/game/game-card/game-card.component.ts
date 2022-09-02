@@ -8,6 +8,7 @@ import { IGame } from '../interfaces/IGame';
 export class GameCardComponent {
   @Input()
   Game!: IGame;
+  @Input() hideEditDelete!: boolean
 
   constructor() {}
 

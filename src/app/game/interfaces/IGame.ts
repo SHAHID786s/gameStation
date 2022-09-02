@@ -1,11 +1,11 @@
 export interface IGame {
-  Id: number;
+  Id?: number;
   Genre: string;
   Title: string;
   Price?: number;
   Age: number;
   Info: string;
   src?: string;
-  available?: boolean;
-  releaseDate?:string
+  Available?: boolean;
+  ReleaseDate?:string
 }
