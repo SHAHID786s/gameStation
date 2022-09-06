@@ -26,7 +26,7 @@ export class GameListComponent implements OnInit {
           this.games=[newG,...this.games]
         }
         const specificTitles = this.games.filter((x) => {
-          return x.Available === true;
+          return x.Available === "yes";
         });
         console.log(specificTitles);
         this.games = specificTitles;

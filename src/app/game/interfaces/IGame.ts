@@ -6,6 +6,6 @@ export interface IGame {
   Age: number;
   Info: string;
   src?: string;
-  Available?: boolean;
+  Available?: string;
   ReleaseDate?:string
 }
