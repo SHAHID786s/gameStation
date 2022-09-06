@@ -120,7 +120,7 @@
           <div class="form-group col-sm-6" id="btns">
             <img class="card-img-top" src="assets\image\noimage.jpg"/>
             <input type ="file"class="form-control-file">
-            <button type="submit" class="btn btn-success mr-3 mt-3 btn-block" > Save</button>
+            <button type="submit" class="btn btn-success mr-3 mt-3 btn-block" *ngIf="this.manageGameForm.valid" > Save</button>
             <button type="reset" class="btn btn-danger mr-3 mt-3 btn-block">Cancel </button>
             <button type="button"class="btn btn-primary mr-3 mt-3 btn-block" (click)="selectTab(6)"> Back </button>
           </div>

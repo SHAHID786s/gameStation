@@ -1,22 +1,42 @@
-<p>game-detail works!</p>
-<p>{{ gameId }}</p>
-
-<div class="container">
-  <div class="row">
-    <ng-container>
-      <div class="col-sm">
-        <button
-          type="button"
-          class="btn btn-lg btn-outline-primary"
-          (click)="onPrevious()"
-          [disabled]="cantGoBack === true">Prev</button>
+<div class="container col-sm-8 offset-2">
+  <div class="row shadow">
+   <div class="card " >
+     <div class="card-body">
+        <img *ngIf="Game.src" class="card-img-top" src={{Game.src}}/>
+        <img *ngIf="!Game.src" class="card-img-top" src="assets/image/noimage.jpg"/>
+         <p class="card-text"></p>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item text-muted">Title: {{ Game.Title }}</li>
+            <li class="list-group-item text-muted">Genre: {{ Game.Genre }}</li>
+            <li class="list-group-item text-muted">Price: {{ Game.Price }}</li>
+            <li class="list-group-item text-muted">Age: {{ Game.Age }}</li>
+            <li class="list-group-item text-muted">Released: {{ Game.ReleaseDate }}</li>
+          </ul>
       </div>
-    </ng-container>
-    <div class="col-sm">
-      <button
-        type="button"
-        class="btn btn-lg btn-outline-primary"
-        (click)="onNext()">Next</button>
-    </div>
+      <div class="card-footer">
+        <div class="btn-group d-flex">
+          <button class="btn btn-primary">Like</button>
+          <button class="btn btn-success">Message</button>
+        </div>
+      </div>
+   </div>
+
+   <div class=" col-sm-4">
+     <div class="tab-panel">
+       <tabset class="member-tabset">
+         <tab heading ='Overview'>{{ Game.Info}}</tab>
+         <tab heading ='Photos'></tab>
+       </tabset>
+     </div>
+   </div>
+
+
+
+
+
+
+
+
   </div>
 </div>
+

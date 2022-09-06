@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { HubService } from 'src/app/services/hub.service';
+import { IGame } from '../interfaces/IGame';
 
 @Component({
   selector: 'app-game-detail',
@@ -9,7 +11,12 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class GameDetailComponent implements OnInit {
   gameId!: number;
   cantGoBack!: boolean;
-  constructor(private route: ActivatedRoute, private router: Router) {}
+  Game!: IGame;
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private service: HubService
+  ) {}
 
   ngOnInit() {
     this.gameId = Number(this.route.snapshot.params['id']);
@@ -17,6 +24,8 @@ export class GameDetailComponent implements OnInit {
     // this.route.params.subscribe((params) => {
     //   this.gameId = +params['Id'];
     // });
+
+    this.getAll();
   }
 
   onNext() {
@@ -37,5 +46,18 @@ export class GameDetailComponent implements OnInit {
       console.log(this.gameId);
       this.router.navigate(['/game-detail', this.gameId]); // updates the value in url;
     }
+  }
+
+  getAll() {
+    this.Game={
+      Info:this.service.getGameDetail(this.gameId)?.Info!,
+      Title:this.service.getGameDetail(this.gameId)?.Title!,
+      Genre:this.service.getGameDetail(this.gameId)?.Genre!,
+      Price:this.service.getGameDetail(this.gameId)?.Price!,
+      Age:this.service.getGameDetail(this.gameId)?.Age!,
+      ReleaseDate:this.service.getGameDetail(this.gameId)?.ReleaseDate!,
+      src:this.service.getGameDetail(this.gameId)?.src!,
+    }
+    //console.log("@@@@@@@@@@@@@@@"+ this.service.getGameDetail(this.gameId)?.Title)
   }
 }

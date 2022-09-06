@@ -1,3 +1,15 @@
 .container{
   text-align: center;
+  margin-top: 10%;
+}
+/* make image siot flush into card  */
+.card-img-top {
+  width: 100%;
+  height: 200px;
+  object-fit: fill;
+}
+
+.card
+{
+  width: 280px;
 }
