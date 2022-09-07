@@ -1,5 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import {
+  NgxGalleryImage,
+  NgxGalleryOptions,
+  NgxGalleryAnimation,
+  NgxGalleryImageSize,
+} from '@kolkov/ngx-gallery';
 import { HubService } from 'src/app/services/hub.service';
 import { IGame } from '../interfaces/IGame';
 
@@ -11,7 +17,9 @@ import { IGame } from '../interfaces/IGame';
 export class GameDetailComponent implements OnInit {
   gameId!: number;
   cantGoBack!: boolean;
-  Game!: IGame;
+  g!: IGame;
+  galleryOptions!: NgxGalleryOptions[];
+  galleryImages!: NgxGalleryImage[];
   constructor(
     private route: ActivatedRoute,
     private router: Router,
@@ -19,13 +27,42 @@ export class GameDetailComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.gameId = Number(this.route.snapshot.params['id']);
+    this.gameId = +this.route.snapshot.params['id'];
+    //resolver is a middleware liek feature that is executed before component is loaded
+    this.route.data.subscribe((data: any) => {
+      console.log('data is : ' + data['gme']);
+      this.g = data['gme'];
+    });
 
-    // this.route.params.subscribe((params) => {
-    //   this.gameId = +params['Id'];
-    // });
+    this.galleryOptions = [
+      {
+        width: '200%',
+        height: '300px',
+        thumbnailsColumns: 3,
+        imageAnimation: NgxGalleryAnimation.Zoom,
+        //previewArrows: true,
+        previewBullets: true,
+        //imageAutoPlay:true
+      },
+    ];
 
-    this.getAll();
+    this.galleryImages = [
+      {
+        small: 'assets/image/gpic/captain.jpg',
+        medium: 'assets/image/gpic/captain.jpg',
+        big: 'assets/image/gpic/captain.jpg',
+      },
+      {
+        small: 'assets/image/gpic/beard.png',
+        medium: 'assets/image/gpic/beard.png',
+        big: 'assets/image/gpic/beard.png',
+      },
+      {
+        small: 'assets/image/gpic/ghost.jpg',
+        medium: 'assets/image/gpic/ghost.jpg',
+        big: 'assets/image/gpic/ghost.jpg',
+      },
+    ];
   }
 
   onNext() {
@@ -48,16 +85,16 @@ export class GameDetailComponent implements OnInit {
     }
   }
 
-  getAll() {
-    this.Game={
-      Info:this.service.getGameDetail(this.gameId)?.Info!,
-      Title:this.service.getGameDetail(this.gameId)?.Title!,
-      Genre:this.service.getGameDetail(this.gameId)?.Genre!,
-      Price:this.service.getGameDetail(this.gameId)?.Price!,
-      Age:this.service.getGameDetail(this.gameId)?.Age!,
-      ReleaseDate:this.service.getGameDetail(this.gameId)?.ReleaseDate!,
-      src:this.service.getGameDetail(this.gameId)?.src!,
-    }
-    //console.log("@@@@@@@@@@@@@@@"+ this.service.getGameDetail(this.gameId)?.Title)
-  }
+  // getAll() {
+  //   this.Game = {
+  //     Info: this.service.getGameDetail(this.gameId)?.Info!,
+  //     Title: this.service.getGameDetail(this.gameId)?.Title!,
+  //     Genre: this.service.getGameDetail(this.gameId)?.Genre!,
+  //     Price: this.service.getGameDetail(this.gameId)?.Price!,
+  //     Age: this.service.getGameDetail(this.gameId)?.Age!,
+  //     ReleaseDate: this.service.getGameDetail(this.gameId)?.ReleaseDate!,
+  //     src: this.service.getGameDetail(this.gameId)?.src!,
+  //   };
+  //   //console.log("@@@@@@@@@@@@@@@"+ this.service.getGameDetail(this.gameId)?.Title)
+  // }
 }

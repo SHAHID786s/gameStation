@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class HubService {
-  tempGames: Array<IGame> = [];
+  tempGames!: IGame;
   constructor(private http: HttpClient) {}
 
   //this methods signature has a return type of a array of IGame as an observable. creating type safety for the function
@@ -41,7 +41,7 @@ export class HubService {
 
   generateId() {
     if (localStorage.getItem('Id')) {
-      localStorage.setItem('Id', localStorage.getItem('Id')! + 1);
+      localStorage.setItem('Id', String(+localStorage.getItem('Id')! + 1));
       return +localStorage.getItem('Id')! + 1;
     } else {
       localStorage.setItem('Id', '101');
@@ -69,18 +69,12 @@ export class HubService {
   }
 
   //gets the details of the current game using the game id and checks if the game is in out local array of ALL of the games
-  getGameDetail(id:Number): IGame| undefined{
-
-    this.GetAllTitles().subscribe(
-      (res) => { this.tempGames = res},
-      (err) => {
-        console.log(err);
-      }
+  getGameDetail(id: Number): any {
+    return this.GetAllTitles().pipe(
+      map((p) => {
+        return p.find((p) => p.Id === id);
+      })
     );
-
-    let getSpecificGame = this.tempGames.find(x=> x.Id===id);
-    //onsole.log('##' + getSpecificGame?.Title);
-    return getSpecificGame;
-
   }
 }
+

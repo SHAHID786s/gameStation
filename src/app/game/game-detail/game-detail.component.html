@@ -1,16 +1,17 @@
 <div class="container col-sm-8 offset-2">
-  <div class="row shadow">
+  <div class="row shadow" routerLink="/game-detail/{{ g?.Id }}">
+
    <div class="card " >
      <div class="card-body">
-        <img *ngIf="Game.src" class="card-img-top" src={{Game.src}}/>
-        <img *ngIf="!Game.src" class="card-img-top" src="assets/image/noimage.jpg"/>
+        <img *ngIf="g?.src" class="card-img-top" src={{g?.src}}/>
+        <img *ngIf="!g?.src" class="card-img-top" src="assets/image/noimage.jpg"/>
          <p class="card-text"></p>
           <ul class="list-group list-group-flush">
-            <li class="list-group-item text-muted">Title: {{ Game.Title }}</li>
-            <li class="list-group-item text-muted">Genre: {{ Game.Genre }}</li>
-            <li class="list-group-item text-muted">Price: {{ Game.Price }}</li>
-            <li class="list-group-item text-muted">Age: {{ Game.Age }}</li>
-            <li class="list-group-item text-muted">Released: {{ Game.ReleaseDate }}</li>
+            <li class="list-group-item text-muted">Title: {{ g?.Title }}</li>
+            <li class="list-group-item text-muted">Genre: {{ g?.Genre }}</li>
+            <li class="list-group-item text-muted">Price: {{ g?.Price }}</li>
+            <li class="list-group-item text-muted">Age: {{ g?.Age }}</li>
+            <li class="list-group-item text-muted">Released: {{ g?.ReleaseDate }}</li>
           </ul>
       </div>
       <div class="card-footer">
@@ -24,8 +25,10 @@
    <div class=" col-sm-4">
      <div class="tab-panel">
        <tabset class="member-tabset">
-         <tab heading ='Overview'>{{ Game.Info}}</tab>
-         <tab heading ='Photos'></tab>
+         <tab heading ='Overview'>{{ g?.Info}}</tab>
+         <tab heading ='Photos'>
+          <ngx-gallery [options]="galleryOptions" [images]="galleryImages" class="ngx-gallery"></ngx-gallery>
+         </tab>
        </tabset>
      </div>
    </div>

@@ -38,7 +38,7 @@ export class ManageGameComponent implements OnInit {
       DescriptionInfo: this.fb.group({ Info: [null, Validators.required] }),
       PriceInfo: this.fb.group({ Price: [null, Validators.required] }),
       ReleaseDateInfo: this.fb.group({
-        ReleaseDate: [null, Validators.required],
+      ReleaseDate: [null, Validators.required],
       }),
       AvailableInfo: this.fb.group({ Available: [null, Validators.required] }),
       // src: [null, Validators.required],

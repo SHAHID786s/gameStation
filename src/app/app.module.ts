@@ -22,12 +22,14 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { ButtonsModule } from 'ngx-bootstrap/buttons';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { GameDetailResolverService } from './game/game-detail/game-detail-resolver.service';
+import { NgxGalleryModule } from '@kolkov/ngx-gallery';
 
 const applicationRoutes: Routes = [
   { path: '', component: GameListComponent },
   { path: 'manage', component: ManageGameComponent },
   { path: 'upcoming', component: UpcomingGameComponent },
-  { path: 'game-detail/:id', component: GameDetailComponent },
+  { path: 'game-detail/:id', component: GameDetailComponent,resolve:{gme:GameDetailResolverService} },
   { path: 'user/login', component: UserLoginComponent },
   { path: 'user/register', component: UserRegisterComponent },
   { path: '**', component: GameListComponent }, // wildcard for page not found
@@ -56,8 +58,9 @@ const applicationRoutes: Routes = [
     TabsModule.forRoot(),
     ButtonsModule.forRoot(),
     BsDatepickerModule.forRoot(),
+    NgxGalleryModule
   ],
-  providers: [HubService, AlertifyService, AuthService],
+  providers: [HubService, AlertifyService, AuthService,GameDetailResolverService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

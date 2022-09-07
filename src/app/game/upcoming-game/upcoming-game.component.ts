@@ -27,9 +27,13 @@ export class UpcomingGameComponent implements OnInit {
         {
           this.games=[upcomingLocalGame,...this.games]; // add newly added game that is not available to the upcoming roster
         }
+
+        
         const upcomingGames = this.games.filter((x) => {
           return x.Available === "no";
         });
+
+
         this.games = upcomingGames; // now store upcoming games into that array for displaying
       },
       (err) => {
