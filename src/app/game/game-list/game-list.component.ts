@@ -11,6 +11,9 @@ import { IGame } from '../interfaces/IGame';
 export class GameListComponent implements OnInit {
   games: Array<IGame> = [];
   isAvailable!: boolean;
+  genretype='';
+  searchGenre=''
+  sortByParam='';
   constructor(private hubService: HubService) {}
 
   ngOnInit(): void {
@@ -36,4 +39,16 @@ export class GameListComponent implements OnInit {
       }
     );
   }
+
+  onGenreFilter()
+  {
+    this.searchGenre = this.genretype;
+    console.log(this.genretype)
+  }
+  onGenreClearFilter()
+  { //reset search
+    this.searchGenre = '';
+    this.genretype ='';
+  }
+
 }

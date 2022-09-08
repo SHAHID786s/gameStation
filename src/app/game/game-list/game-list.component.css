@@ -1,0 +1,7 @@
+div#filters {
+  max-width: 30%;
+  display: inline-block;
+}
+button.form-control{
+  display: inline-block;
+}

@@ -1,6 +1,40 @@
+<div class="col-sm-8" id="filters">
+  <input
+    class="form-control"
+    [(ngModel)]="genretype"
+    placeholder="Search Titles..."
+  />
+</div>
+
+<span>
+  <button (click)="onGenreFilter()" type="button" class="btn btn-dark mr-3">
+    Search
+  </button>
+  <button
+    (click)="onGenreClearFilter()"
+    type="button"
+    class="btn btn-dark mr-3"
+  >
+    Clear Filter
+  </button>
+</span>
+
+<label>sort by &nbsp;</label>
+<select [(ngModel)]="sortByParam" class="form-control-sm">
+  <option value="Age">Age</option>
+  <option value="Price">Price</option>
+</select>
+
 <div class="row row-cols-1 row-cols-md-4">
-  <!-- to create many cards just loop line which starts div class - col mb-4 -->
-  <div *ngFor="let g of games; index as i" class="col mb-4">
+  <!-- to create many cards just loop line which starts div class - col mb-4
+  games|sort:['Age','desc']-->
+  <div
+    *ngFor="
+      let g of games | filter: searchGenre:'Title' | sort: [sortByParam, ''];
+      index as i
+    "
+    class="col mb-4"
+  >
     <app-game-card [Game]="g"></app-game-card>
   </div>
 </div>
